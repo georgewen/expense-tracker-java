@@ -1,0 +1,84 @@
+{
+  "swagger": "2.0",
+  "info": {
+    "title": "Expense Tracker API",
+    "description": "Expense Tracker description"
+  },
+  "host": "localhost:9000",
+  "schemes": [
+    "http"
+  ],
+  "consumes": [
+    "application/json"
+  ],
+  "produces": [
+    "application/json"
+  ],
+  "definitions": {
+    "ExpenseResponse": {
+      "type": "object",
+      "required": [
+        "data"
+      ],
+      "properties": {
+        "data": {
+          "$ref": "#/definitions/FullExpense"
+        }
+      }
+    },
+    "ErrorResponse": {
+      "type": "object",
+      "required": [
+        "message"
+      ],
+      "properties": {
+        "message": {
+          "type": "string",
+          "example": "Expecting JSON data"
+        }
+      }
+    },
+    "FullExpense": {
+      "allOf": [
+        {
+          "properties": {
+            "id": {
+              "type": "string",
+              "example": "5f54aba1127d4c320829a4d1"
+            }
+          }
+        },
+        {
+          "$ref": "#/definitions/Expense"
+        }
+      ]
+    },
+    "Expense": {
+      "type": "object",
+      "required": [
+        "date",
+        "category",
+        "amount",
+        "description"
+      ],
+      "properties": {
+        "date": {
+          "type": "string",
+          "example": "2020-12-25"
+        },
+        "category": {
+          "type": "string",
+          "example": "meal"
+        },
+        "description": {
+          "type": "string",
+          "example": "My description"
+        },
+        "amount": {
+          "type": "number",
+          "example": 5000
+        }
+      }
+    }
+  }
+}

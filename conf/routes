@@ -5,5 +5,14 @@
 # An example controller showing a sample home page
 GET     /                           controllers.HomeController.index
 
+GET		/api/expenses				controllers.ExpenseController.index
+GET		/api/expenses/:id			controllers.ExpenseController.getExpense(id: String)
+POST	/api/expenses				controllers.ExpenseController.createExpense(request: Request)
+PUT		/api/expenses/:id			controllers.ExpenseController.modifyExpense(request: Request, id: String)
+DELETE	/api/expenses/:id			controllers.ExpenseController.deleteExpense(id: String)
+
+
+GET     /docs/swagger-ui/*file        controllers.Assets.at(path:String="/public/lib/swagger-ui", file:String)
+
 # Map static resources from the /public folder to the /assets URL path
 GET     /assets/*file               controllers.Assets.versioned(path="/public", file: Asset)
